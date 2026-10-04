@@ -121,6 +121,22 @@ const { title } = Astro.props;
     color: var(--indigo);
   }
 
+  /* Ensure all links and buttons have sufficient color contrast */
+  @media (prefers-contrast: more) {
+    a {
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   :focus-visible {
     outline: 3px solid var(--indigo);
     outline-offset: 3px;

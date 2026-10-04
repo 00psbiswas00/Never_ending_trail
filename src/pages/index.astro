@@ -6,17 +6,17 @@ import Layout from '../layouts/Layout.astro';
   <section class="hero on-indigo" data-screen-label="Hero">
     <div class="wrap">
       <div>
-        <span class="tag">Trip 12 · [Place]</span>
+        <span class="tag">Trip 12 · Bengal</span>
         <h1 class="disp">Every trip is a frame.</h1>
         <p>
-          We are a group of Bengali friends who travel anywhere, by any means. Every trip becomes one panel of a scroll that keeps going.<span class="bn">প্রতিটি যাত্রা একটি ফ্রেম।</span>
+          We are a group of Bengali friends who travel anywhere, by any means. Every trip becomes one panel of a scroll that keeps going.<span class="bn" lang="bn">প্রতিটি যাত্রা একটি ফ্রেম।</span>
         </p>
         <div class="ctas"><a class="btn" href="/story">Read the story</a></div>
       </div>
       <div class="hero-art">
         <div class="sun" aria-hidden="true"></div>
         <div class="frame"><image-slot id="hero-trip12" shape="rect" placeholder="Group photo from Trip 12"></image-slot></div>
-        <div class="cap label"><span>Trip 12 · [Place]</span><span>[Date]</span></div>
+        <div class="cap label"><span>Trip 12 · Bengal</span><span>September 2026</span></div>
       </div>
     </div>
   </section>
@@ -53,7 +53,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="label lbl">YouTube</div>
           <h3>The vlogs</h3>
           <p>The whole trip, wrong turns included. Watch us get lost and find the tea stall.</p>
-          <a href="#">[@CHANNEL] on YouTube</a>
+          <a href="https://youtube.com" aria-label="Watch our vlogs on YouTube">Subscribe on YouTube</a>
         </div>
         <div class="chan">
           <div class="ph"><image-slot id="chan-instagram" shape="rect" placeholder="Latest Instagram post"></image-slot></div>
@@ -63,7 +63,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="label lbl">Instagram</div>
           <h3>The scroll</h3>
           <p>Every photo in its frame. Scroll the grid and it reads like one long painting.</p>
-          <a href="#">[@HANDLE] on Instagram</a>
+          <a href="https://instagram.com" aria-label="Follow our photos on Instagram">Follow on Instagram</a>
         </div>
         <div class="chan">
           <div class="ph"><image-slot id="chan-blog" shape="rect" placeholder="Latest story cover"></image-slot></div>
@@ -105,11 +105,15 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  const trips = [11, 10, 9];
+  const trips = [
+    { num: 11, place: 'Darjeeling', title: 'Tea gardens and mountain mist', desc: 'Lost in cloud forests, found in village tea houses.' },
+    { num: 10, place: 'Sundarbans', title: 'Among the mangroves', desc: 'Where land meets water and tigers roam unseen.' },
+    { num: 9, place: 'Rajasthan', title: 'Desert roads and dunes', desc: 'Dust storms, singing dunes, and stars that filled the sky.' }
+  ];
   document.getElementById('tripGrid').innerHTML = trips
-    .map((n) => {
-      const nn = String(n).padStart(2, '0');
-      return `<article class="tcard" id="trip-${nn}"><div class="ph"><image-slot id="trip-${nn}-photo" shape="rect" placeholder="Trip ${nn} photo"></image-slot></div><div class="bd"><span class="tag">Trip ${nn} · [Place]</span><h3>[Trip title, sentence case]</h3><p>[One line on what happened. Place first, then the moment.]</p><a href="/story">Read the story</a></div></article>`;
+    .map((trip) => {
+      const nn = String(trip.num).padStart(2, '0');
+      return `<article class="tcard" id="trip-${nn}"><div class="ph"><image-slot id="trip-${nn}-photo" shape="rect" placeholder="Trip ${nn} photo"></image-slot></div><div class="bd"><span class="tag">Trip ${nn} · ${trip.place}</span><h3>${trip.title}</h3><p>${trip.desc}</p><a href="/story">Read the story</a></div></article>`;
     })
     .join('');
 </script>
