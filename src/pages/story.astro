@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
       <span class="tag">Trip 12 · [Place]</span>
       <h1 class="disp">[Trip story headline]</h1>
       <p class="dek">[Standfirst: where we went and the one moment that made the trip, in a sentence or two.]</p>
-      <p class="dek-bn">[বাংলা সারসংক্ষেপ]</p>
+      <p class="dek-bn" lang="bn">[বাংলা সারসংক্ষেপ]</p>
       <div class="byline label"><span>[Date]</span><span>Train · Road</span><span>6 friends</span><span>8 min read</span></div>
     </div>
     <div class="shero" data-screen-label="Story hero">
@@ -24,12 +24,12 @@ import Layout from '../layouts/Layout.astro';
         <p>[Second paragraph. What we had planned, and what actually happened instead.]</p>
         <figure>
           <div class="frame"><image-slot id="story12-fig1" shape="rect" placeholder="Photo from the journey"></image-slot></div>
-          <figcaption><span>[Caption in English.]</span><span class="bn">[বাংলা ক্যাপশন]</span></figcaption>
+          <figcaption><span>[Caption in English.]</span><span class="bn" lang="bn">[বাংলা ক্যাপশন]</span></figcaption>
         </figure>
         <h2>[Section heading]</h2>
         <p>[The middle of the trip. People first: who we met, what they told us, what we ate.]</p>
-        <p>[Keep paragraphs short. Bangla words sit in the running text at the same size, like <span class="bn">চা</span>, never a stiff translation.]</p>
-        <div class="pull"><p>[A line someone said on the trip.]</p><span class="bn">[বাংলায় একই কথা]</span></div>
+        <p>[Keep paragraphs short. Bangla words sit in the running text at the same size, like <span class="bn" lang="bn">চা</span>, never a stiff translation.]</p>
+        <div class="pull"><p>[A line someone said on the trip.]</p><span class="bn" lang="bn">[বাংলায় একই কথা]</span></div>
         <div class="pair">
           <div class="frame"><image-slot id="story12-pair-a" shape="rect" placeholder="Photo"></image-slot></div>
           <div class="frame"><image-slot id="story12-pair-b" shape="rect" placeholder="Photo"></image-slot></div>
@@ -64,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .back{display:inline-flex;margin-top:40px;color:var(--indigo)}
+  .back{display:inline-flex;align-items:center;min-height:44px;margin-top:28px;color:var(--indigo)}
   .head{padding:40px 0 48px;max-width:1000px}
   .head h1{font-size:56px;color:var(--indigo);margin:24px 0 20px;text-wrap:balance}
   .head .dek{font-size:22px;line-height:1.45;max-width:36em;text-wrap:pretty}

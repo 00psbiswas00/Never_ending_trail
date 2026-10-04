@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const id = import.meta.env.PUBLIC_FORMSPREE_ID;
+const endpoint = id ? `https://formspree.io/f/${id}` : undefined;
 ---
 
 <Layout title="Join a trip">
@@ -8,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
       <div>
         <span class="tag">Trip 13 · Being planned</span>
         <h1 class="disp">Come on the next one.</h1>
-        <div class="bn">পরের যাত্রায় চলো</div>
+        <div class="bn" lang="bn">পরের যাত্রায় চলো</div>
         <p>Anyone is welcome. You don't need to know us yet, and you don't need gear. Tell us you're in and we'll send the plan when it's ready.</p>
       </div>
       <div class="next13">
@@ -38,22 +40,24 @@ import Layout from '../layouts/Layout.astro';
       <div class="side">
         <h2 class="h2dot">I'm in</h2>
         <p>We'll only use this to send you trip plans. No newsletters, no spam.</p>
-        <p class="bnl">বাংলা বা ইংরেজি, যেকোনো ভাষায় লিখতে পারো।</p>
+        <p class="bnl" lang="bn">বাংলা বা ইংরেজি, যেকোনো ভাষায় লিখতে পারো।</p>
       </div>
       <div>
-        <form id="joinForm" novalidate>
-          <div class="fld" id="f-name"><label for="name">Name</label><input type="text" id="name" autocomplete="name" required><span class="err">Tell us what to call you.</span></div>
-          <div class="fld"><label for="city">City</label><input type="text" id="city" autocomplete="address-level2"></div>
-          <div class="fld" id="f-phone"><label for="phone">WhatsApp</label><input type="tel" id="phone" autocomplete="tel" placeholder="+91"><span class="err">Add a WhatsApp number or an email.</span></div>
-          <div class="fld" id="f-email"><label for="email">Email <span class="opt">(or WhatsApp)</span></label><input type="email" id="email" autocomplete="email"></div>
+        <form id="joinForm" action={endpoint} method="post" novalidate>
+          <div class="fld" id="f-name"><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" maxlength="80" required aria-describedby="e-name"><span class="err" id="e-name">Tell us what to call you.</span></div>
+          <div class="fld"><label for="city">City</label><input type="text" id="city" name="city" autocomplete="address-level2" maxlength="80"></div>
+          <div class="fld" id="f-phone"><label for="phone">WhatsApp</label><input type="tel" id="phone" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="+91" maxlength="20" aria-describedby="e-phone"><span class="err" id="e-phone">Add a WhatsApp number or an email.</span></div>
+          <div class="fld" id="f-email"><label for="email">Email <span class="opt">(or WhatsApp)</span></label><input type="email" id="email" name="email" autocomplete="email" maxlength="120" aria-describedby="e-email"><span class="err" id="e-email">That email doesn't look right. Check for a typo.</span></div>
           <fieldset class="fld full"><legend>How do you like to travel? <span class="opt">(pick any)</span></legend>
             <div class="chips"><label><input type="checkbox" name="mode" value="Bike"><span>Bike</span></label><label><input type="checkbox" name="mode" value="Train"><span>Train</span></label><label><input type="checkbox" name="mode" value="Road"><span>Road</span></label><label><input type="checkbox" name="mode" value="Boat"><span>Boat</span></label><label><input type="checkbox" name="mode" value="Plane"><span>Plane</span></label><label><input type="checkbox" name="mode" value="Mountains"><span>Mountains</span></label></div>
           </fieldset>
           <fieldset class="fld full"><legend>Travelled with us before?</legend>
             <div class="chips"><label><input type="radio" name="before" value="no" checked><span>First trip</span></label><label><input type="radio" name="before" value="yes"><span>Been on one</span></label></div>
           </fieldset>
-          <div class="fld full"><label for="note">Anything we should know <span class="opt">(optional)</span></label><textarea id="note" placeholder="Where you'd love to go, dates that don't work, food you can't eat"></textarea></div>
-          <div class="actions"><small>We'll message you when the Trip 13 plan is ready.</small><button class="btn" type="submit">Join a trip</button></div>
+          <div class="fld full"><label for="note">Anything we should know <span class="opt">(optional)</span></label><textarea id="note" name="note" maxlength="1000" placeholder="Where you'd love to go, dates that don't work, food you can't eat"></textarea></div>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+          <p class="ferr" id="formErr" role="alert"></p>
+          <div class="actions"><small>We'll message you when the Trip 13 plan is ready.</small><button class="btn" type="submit" id="joinBtn">Join a trip</button></div>
         </form>
         <div class="done" id="done" role="status">
           <span class="tag">Trip 13 · You're in</span>
@@ -105,9 +109,14 @@ import Layout from '../layouts/Layout.astro';
   .chips label:hover span{border-color:var(--red)}
   .chips input:checked+span{background:var(--indigo);color:var(--cream)}
   .chips input:focus-visible+span{outline:3px solid var(--indigo);outline-offset:3px}
-  .err{font-size:14px;color:var(--red);display:none}
+  form{--red-text:#B0302A}/* brand red darkened to pass 4.5:1 on cream */
+  .err{font-size:14px;color:var(--red-text);display:none}
   .fld.bad .err{display:block}
   .fld.bad input{border-color:var(--red)}
+  .ferr{grid-column:1/-1;font-size:16px;color:var(--red-text);font-weight:600}
+  .ferr:empty{display:none}
+  button.btn[aria-busy=true]{opacity:.7;cursor:progress}
+  #doneMsg{overflow-wrap:anywhere}
   .actions{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:8px}
   .actions small{font-size:14px;max-width:28em}
   button.btn{cursor:pointer}
@@ -120,12 +129,30 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
-  const f=document.getElementById('joinForm');
-  f.addEventListener('submit',e=>{e.preventDefault();
-  const name=f.name.value.trim(),ph=f.phone.value.trim(),em=f.email.value.trim();
-  document.getElementById('f-name').classList.toggle('bad',!name);
-  document.getElementById('f-phone').classList.toggle('bad',!ph&&!em);
-  if(!name||(!ph&&!em)){(!name?f.name:f.phone).focus();return}
-  document.getElementById('doneMsg').textContent=`Thanks, ${name}. We'll send the Trip 13 plan to ${ph||em} when it's ready.`;
-  f.style.display='none';const d=document.getElementById('done');d.classList.add('show');d.setAttribute('tabindex','-1');d.focus();});
+  const f=document.getElementById('joinForm') as HTMLFormElement;
+  const btn=document.getElementById('joinBtn') as HTMLButtonElement;
+  const formErr=document.getElementById('formErr')!;
+  const el=(id:string)=>document.getElementById(id) as HTMLInputElement;
+  const mark=(fld:string,input:HTMLInputElement,bad:boolean)=>{document.getElementById(fld)!.classList.toggle('bad',bad);bad?input.setAttribute('aria-invalid','true'):input.removeAttribute('aria-invalid')};
+  f.addEventListener('submit',async e=>{e.preventDefault();
+    if(btn.getAttribute('aria-busy')==='true')return;
+    const name=el('name'),phone=el('phone'),email=el('email');
+    const n=name.value.trim(),ph=phone.value.trim(),em=email.value.trim();
+    mark('f-name',name,!n);
+    mark('f-phone',phone,!ph&&!em);
+    mark('f-email',email,!!em&&!email.validity.valid);
+    const firstBad=f.querySelector<HTMLInputElement>('[aria-invalid=true]');
+    if(firstBad){firstBad.focus();return}
+    formErr.textContent='';
+    if(!f.getAttribute('action')){formErr.textContent="Sign-ups aren't switched on yet. Please try again in a day or two.";return}
+    btn.setAttribute('aria-busy','true');btn.textContent='Sending…';
+    try{
+      const res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'},signal:AbortSignal.timeout(15000)});
+      if(!res.ok)throw new Error(String(res.status));
+      document.getElementById('doneMsg')!.textContent=`Thanks, ${n}. We'll send the Trip 13 plan to ${ph||em} when it's ready.`;
+      f.style.display='none';const d=document.getElementById('done')!;d.classList.add('show');d.setAttribute('tabindex','-1');d.focus();
+    }catch(err){
+      formErr.textContent=navigator.onLine?"We couldn't send that. Your details are still here, so try again in a moment.":"You look offline. Your details are still here; send again once you're connected.";
+    }finally{btn.removeAttribute('aria-busy');btn.textContent='Join a trip'}
+  });
 </script>

@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="intro" data-screen-label="Stories intro">
     <div class="wrap">
       <h1 class="disp">Stories</h1>
-      <div class="bn">গল্প</div>
+      <div class="bn" lang="bn">গল্প</div>
       <p>Every trip we take, told by the friends who were there. Newest first, one panel of the scroll at a time.</p>
       <div class="filters" role="group" aria-label="Filter by how we travelled" id="filters"></div>
     </div>
@@ -41,9 +41,9 @@ import Layout from '../layouts/Layout.astro';
   .intro .bn{font:700 36px/1.2 var(--bn);color:var(--indigo);margin-top:8px}
   .intro p{max-width:34em;margin-top:24px}
   .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
-  .filters button{font:600 14px/1 var(--mono);letter-spacing:3px;text-transform:uppercase;padding:12px 14px;border:2px solid var(--indigo);background:none;color:var(--indigo);cursor:pointer;transition:background .15s,color .15s}
-  .filters button:hover{background:var(--cream)}
-  .filters button[aria-pressed="true"]{background:var(--indigo);color:var(--cream)}
+  .filters :global(button){font:600 14px/1 var(--mono);letter-spacing:3px;text-transform:uppercase;min-height:44px;padding:12px 14px;border:2px solid var(--indigo);background:none;color:var(--indigo);cursor:pointer;transition:background .15s,color .15s}
+  .filters :global(button:hover){background:var(--cream)}
+  .filters :global(button[aria-pressed="true"]){background:var(--indigo);color:var(--cream)}
   .feature{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:center;text-decoration:none;color:var(--ink);}
   .feature .frame{aspect-ratio:3/2;transition:border-color .15s}
   .feature:hover .frame{border-color:var(--red)}

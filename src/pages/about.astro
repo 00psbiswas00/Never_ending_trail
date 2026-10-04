@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
       <div>
         <div class="label">01 / Who we are</div>
         <h1 class="disp">Every trip is a frame.</h1>
-        <div class="bn">নেভার এন্ডিং ট্রেল ক্লাব</div>
+        <div class="bn" lang="bn">নেভার এন্ডিং ট্রেল ক্লাব</div>
         <p>A group of friends who travel anywhere, by any means: bike, train, road, boat, plane, mountains. Every trip becomes a story on our social pages, YouTube, blog and vlogs.</p>
       </div>
       <div><div class="frame"><image-slot id="about-group" shape="rect" placeholder="The whole group, on a trip"></image-slot></div><div class="cap">[Caption: where this was, and which trip.]</div></div>
@@ -61,24 +61,24 @@ import Layout from '../layouts/Layout.astro';
   .crew .top{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
   .crew .top p{max-width:30em;margin-top:16px}
   .mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px}
-  .member{display:flex;flex-direction:column;gap:12px}
-  .member .frame{aspect-ratio:4/5;border-width:6px;background:var(--paper);transition:border-color .18s}
-  .member:hover .frame{border-color:var(--red)}
-  .member h3{font:600 24px/1.2 var(--display);color:var(--indigo);transition:color .18s}
-  .member:hover h3{color:var(--red)}
-  .member .bn{font:500 20px/1.2 var(--bn);color:var(--indigo);margin-top:-6px}
-  .member p{font-size:16px}
-  .member .since{color:var(--indigo)}
-  .member .tag{margin-top:4px}
+  .mgrid :global(.member){display:flex;flex-direction:column;gap:12px}
+  .mgrid :global(.member .frame){aspect-ratio:4/5;border-width:6px;background:var(--paper);transition:border-color .18s}
+  .mgrid :global(.member:hover .frame){border-color:var(--red)}
+  .mgrid :global(.member h3){font:600 24px/1.2 var(--display);color:var(--indigo);transition:color .18s}
+  .mgrid :global(.member:hover h3){color:var(--red)}
+  .mgrid :global(.member .bn){font:500 20px/1.2 var(--bn);color:var(--indigo);margin-top:-6px}
+  .mgrid :global(.member p){font-size:16px}
+  .mgrid :global(.member .since){color:var(--indigo)}
+  .mgrid :global(.member .tag){margin-top:4px}
   .join{padding:var(--sec) 0}
   .join .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
   .join h2{font-size:56px;color:var(--indigo)}
   .join p{margin-top:16px;max-width:32em}
   @media (max-width:1100px){.mgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.ahero h1{font-size:60px}}
-  @media (max-width:768px){.ahero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.ahero h1{font-size:40px}.ahero .bn{font-size:26px}.h2dot{font-size:26px}.igrid{grid-template-columns:minmax(0,1fr)}.icard{padding:24px}.icard h3,.member h3{font-size:20px}.mgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}.member .bn{font-size:18px}.join h2{font-size:32px}}
+  @media (max-width:768px){.ahero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.ahero h1{font-size:40px}.ahero .bn{font-size:26px}.h2dot{font-size:26px}.igrid{grid-template-columns:minmax(0,1fr)}.icard{padding:24px}.icard h3,.mgrid :global(.member h3){font-size:20px}.mgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}.mgrid :global(.member .bn){font-size:18px}.join h2{font-size:32px}}
 </style>
 
 <script>
   const crew=Array.from({length:8},(_,i)=>i+1);
-  document.getElementById('mgrid').innerHTML=crew.map(i=>`<div class="member"><div class="frame"><image-slot id="member-${i}" shape="rect" placeholder="Member photo, on a trip"></image-slot></div><h3>[Name]</h3><div class="bn">[নাম]</div><p>[Their job on the road: the map reader, the one with the camera, the tea finder.]</p><div class="label since">Since Trip [01] · [Home town]</div></div>`).join('');
+  document.getElementById('mgrid').innerHTML=crew.map(i=>`<div class="member"><div class="frame"><image-slot id="member-${i}" shape="rect" placeholder="Member photo, on a trip"></image-slot></div><h3>[Name]</h3><div class="bn" lang="bn">[নাম]</div><p>[Their job on the road: the map reader, the one with the camera, the tea finder.]</p><div class="label since">Since Trip [01] · [Home town]</div></div>`).join('');
 </script>

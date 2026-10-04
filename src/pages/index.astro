@@ -35,7 +35,7 @@ import Layout from '../layouts/Layout.astro';
 
   <section class="trips" id="trips" data-screen-label="Trips">
     <div class="wrap">
-      <div class="sec-head"><h2 class="h2dot">Latest trips</h2><a href="#">All trips</a></div>
+      <div class="sec-head"><h2 class="h2dot">Latest trips</h2><a href="/stories">All trips</a></div>
       <div class="stops" aria-hidden="true"><span class="now"></span><span></span><span></span></div>
       <div class="tgrid" id="tripGrid"></div>
     </div>
@@ -53,7 +53,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="label lbl">YouTube</div>
           <h3>The vlogs</h3>
           <p>The whole trip, wrong turns included. Watch us get lost and find the tea stall.</p>
-          <a href="https://youtube.com" aria-label="Watch our vlogs on YouTube">Subscribe on YouTube</a>
+          <a href="https://youtube.com">Subscribe on YouTube</a>
         </div>
         <div class="chan">
           <div class="ph"><image-slot id="chan-instagram" shape="rect" placeholder="Latest Instagram post"></image-slot></div>
@@ -63,7 +63,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="label lbl">Instagram</div>
           <h3>The scroll</h3>
           <p>Every photo in its frame. Scroll the grid and it reads like one long painting.</p>
-          <a href="https://instagram.com" aria-label="Follow our photos on Instagram">Follow on Instagram</a>
+          <a href="https://instagram.com">Follow on Instagram</a>
         </div>
         <div class="chan">
           <div class="ph"><image-slot id="chan-blog" shape="rect" placeholder="Latest story cover"></image-slot></div>
@@ -99,7 +99,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="join" id="join" data-screen-label="Join">
     <div class="wrap">
       <div><h2 class="disp">Come on the next one.</h2><p>Trip 13 is being planned. Tell us you're in and we'll send the details.</p></div>
-      <a class="btn" href="#">Join a trip</a>
+      <a class="btn" href="/join">Join a trip</a>
     </div>
   </section>
 </Layout>
