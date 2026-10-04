@@ -179,26 +179,28 @@ const { title } = Astro.props;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NETC sun cursor system (Option A: CSS only) */
+  /* NETC sun cursor system (Option A) */
   @media (pointer: fine) {
-    body {
-      cursor: url("/cursors/netc-sun.svg") 16 16, auto;
+    * {
+      cursor: url("/cursors/netc-sun.svg") 16 16, auto !important;
     }
+    a:hover, button:hover, [role="button"]:hover, label:hover, summary:hover, nav a:hover, .btn:hover,
     a, button, [role="button"], label, summary, nav a, .btn {
-      cursor: url("/cursors/netc-sun-hover.svg") 16 16, auto;
+      cursor: url("/cursors/netc-sun-hover.svg") 16 16, auto !important;
     }
     input, textarea, [contenteditable] {
-      cursor: text;
+      cursor: text !important;
     }
   }
 
   /* Dark theme - turmeric sun with cream stroke */
   @media (pointer: fine) {
-    .on-indigo {
-      cursor: url("/cursors/netc-sun-dark.svg") 16 16, auto;
+    .on-indigo, .on-indigo * {
+      cursor: url("/cursors/netc-sun-dark.svg") 16 16, auto !important;
     }
+    .on-indigo a:hover, .on-indigo button:hover, .on-indigo [role="button"]:hover, .on-indigo label:hover, .on-indigo summary:hover, .on-indigo .btn:hover,
     .on-indigo a, .on-indigo button, .on-indigo [role="button"], .on-indigo label, .on-indigo summary, .on-indigo .btn {
-      cursor: url("/cursors/netc-sun-hover-dark.svg") 16 16, auto;
+      cursor: url("/cursors/netc-sun-hover-dark.svg") 16 16, auto !important;
     }
   }
 
