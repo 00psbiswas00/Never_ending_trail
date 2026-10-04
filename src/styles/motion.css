@@ -1,0 +1,306 @@
+.stops::before,
+.nstops::before {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+.stops::after,
+.nstops::after {
+  opacity: 0;
+  transition: opacity 0.2s 1.4s;
+}
+
+.stops span,
+.nstops span {
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.stops span {
+  border-color: var(--cream) !important;
+  background: var(--paper) !important;
+}
+
+.nstops span {
+  border-color: rgba(241, 233, 216, 0.25) !important;
+  background: var(--indigo) !important;
+}
+
+.stops.in::before,
+.nstops.in::before {
+  transform: scaleX(1);
+}
+
+.stops.in::after,
+.nstops.in::after {
+  opacity: 1;
+}
+
+.stops.in span,
+.nstops.in span {
+  border-color: var(--indigo) !important;
+}
+
+.nstops.in span {
+  border-color: var(--cream) !important;
+}
+
+.stops.in span.now {
+  background: var(--turmeric) !important;
+}
+
+.nstops.in span.now {
+  background: var(--turmeric-on-indigo) !important;
+}
+
+.stops.in span:nth-child(1),
+.nstops.in span:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.stops.in span:nth-child(2),
+.nstops.in span:nth-child(2) {
+  transition-delay: 0.65s;
+}
+
+.stops.in span:nth-child(3),
+.nstops.in span:nth-child(3) {
+  transition-delay: 1.1s;
+}
+
+.route path {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  transition: stroke-dashoffset 1.6s ease-out;
+}
+
+.route circle {
+  opacity: 0;
+  transition: opacity 0.2s 1.4s;
+}
+
+.route.in path {
+  stroke-dashoffset: 0;
+}
+
+.route.in circle {
+  opacity: 1;
+}
+
+.flow {
+  display: block;
+  width: 100%;
+  height: 40px;
+  overflow: visible;
+}
+
+.flow path {
+  stroke-dasharray: var(--len, 3000);
+  stroke-dashoffset: var(--len, 3000);
+  transition: stroke-dashoffset 1.6s ease-out;
+}
+
+.flow circle {
+  opacity: 0;
+  transition: opacity 0.2s 1.4s;
+}
+
+.flow.in path {
+  stroke-dashoffset: 0;
+}
+
+.flow.in circle {
+  opacity: 1;
+}
+
+.trail {
+  position: relative;
+  height: 24px;
+}
+
+.trail::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 56px;
+  top: 50%;
+  height: 6px;
+  margin-top: -3px;
+  background: var(--red);
+  border-radius: 3px;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(0.3, 0.6, 0.3, 1);
+}
+
+.trail::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: -26px 0 0 var(--red);
+  opacity: 0;
+  transition: opacity 0.2s 1.4s;
+}
+
+.trail.in::before {
+  transform: scaleX(1);
+}
+
+.trail.in::after {
+  opacity: 1;
+}
+
+.tcard,
+.chan,
+.ncard .ph,
+.card .frame,
+.feature .frame {
+  transition: border-color 0.18s;
+}
+
+.tcard,
+.chan {
+  position: relative;
+  cursor: pointer;
+}
+
+.tcard::after,
+.chan::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  height: 8px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease-out;
+}
+
+.tcard:hover,
+.chan:hover {
+  border-color: var(--red);
+}
+
+.tcard:hover::after,
+.chan:hover::after {
+  transform: scaleX(1);
+}
+
+.tcard:hover .ph {
+  border-color: var(--red);
+}
+
+.chan:hover .ph {
+  border-color: var(--red);
+}
+
+.tcard h3,
+.chan h3,
+.card h3,
+.feature h2,
+.ncard h3 {
+  transition: color 0.18s;
+}
+
+.tcard:hover h3,
+.chan:hover h3,
+.card:hover h3,
+.feature:hover h2 {
+  color: var(--red);
+}
+
+.card:hover .frame,
+.feature:hover .frame {
+  border-color: var(--red);
+}
+
+.card .frame::after,
+.feature .frame::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  height: 8px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease-out;
+  z-index: 2;
+}
+
+.card:hover .frame::after,
+.feature:hover .frame::after {
+  transform: scaleX(1);
+}
+
+.ncard:hover .ph {
+  border-color: var(--turmeric-on-indigo);
+}
+
+.ncard:hover h3 {
+  color: var(--turmeric-on-indigo);
+}
+
+.tcard a,
+.chan a {
+  text-decoration-thickness: 1px;
+  transition: color 0.18s, text-decoration-thickness 0.18s;
+}
+
+.tcard:hover a,
+.chan:hover a {
+  text-decoration-thickness: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stops::before,
+  .nstops::before,
+  .trail::before {
+    transform: none;
+    transition: none;
+  }
+
+  .trail::after {
+    opacity: 1;
+    transition: none;
+  }
+
+  .stops::after,
+  .nstops::after,
+  .route circle {
+    opacity: 1;
+    transition: none;
+  }
+
+  .route path,
+  .flow path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  .flow circle {
+    opacity: 1;
+    transition: none;
+  }
+
+  .stops span,
+  .nstops span {
+    transition: none;
+  }
+
+  .tcard::after,
+  .chan::after,
+  .card .frame::after,
+  .feature .frame::after {
+    transition: none;
+  }
+}

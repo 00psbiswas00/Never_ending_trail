@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Join a trip · Never Ending Trail Club</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,600;62..125,800&family=IBM+Plex+Mono:wght@600&family=Anek+Bangla:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="netc.css">
+<style>
+.h2dot{display:flex;align-items:center;gap:16px;font:600 36px/1.2 var(--display);color:var(--indigo)}
+.h2dot::before{content:"";width:20px;height:20px;border-radius:50%;background:var(--turmeric);flex:none}
+.jhero{background:var(--indigo);color:var(--cream);padding:var(--sec) 0}
+.jhero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center}
+.jhero h1{font-size:84px;margin:24px 0 8px}
+.jhero .bn{font:700 36px/1.2 var(--bn)}
+.jhero p{margin-top:28px;max-width:30em}
+.next13{border:6px solid var(--cream);padding:32px;display:flex;flex-direction:column;gap:16px}
+.next13 .num{font:800 120px/1 var(--display);font-stretch:125%;color:var(--cream)}
+.next13 dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 24px;margin-top:8px}
+.next13 dt{color:var(--turmeric-on-indigo)}
+.next13 dd{font-size:16px}
+.steps{padding:var(--sec) 0 0}
+.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px}
+.step{border:4px solid var(--indigo);padding:32px;display:flex;flex-direction:column;gap:12px}
+.step .n{font:800 40px/1 var(--display);font-stretch:125%;color:var(--indigo)}
+.step h3{font:600 24px/1.25 var(--display);color:var(--indigo)}
+.step p{font-size:16px}
+.formsec{padding:var(--sec) 0}
+.fwrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
+.fwrap .side p{margin-top:20px;max-width:26em}
+.fwrap .side .bnl{font:500 18px/1.5 var(--bn);color:var(--indigo);margin-top:12px}
+form{border:4px solid var(--indigo);background:var(--cream);padding:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.fld{display:flex;flex-direction:column;gap:8px}
+.fld.full{grid-column:1/-1}
+.fld label,.fld legend{font:600 14px/1.2 var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--indigo)}
+.fld .opt{letter-spacing:1px;text-transform:none;font-weight:600;color:var(--ink)}
+input[type=text],input[type=email],input[type=tel],select,textarea{font:400 16px/1.4 var(--display);color:var(--ink);background:var(--paper);border:2px solid var(--indigo);border-radius:0;padding:14px 16px;width:100%;transition:border-color .18s}
+input:hover,select:hover,textarea:hover{border-color:var(--red)}
+textarea{min-height:120px;resize:vertical}
+fieldset{border:0;display:flex;flex-direction:column;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-flex;font:600 14px/1 var(--mono);letter-spacing:3px;text-transform:uppercase;padding:12px 14px;border:2px solid var(--indigo);background:var(--paper);color:var(--indigo);transition:background .18s,color .18s,border-color .18s}
+.chips label:hover span{border-color:var(--red)}
+.chips input:checked+span{background:var(--indigo);color:var(--cream)}
+.chips input:focus-visible+span{outline:3px solid var(--indigo);outline-offset:3px}
+.err{font-size:14px;color:var(--red);display:none}
+.fld.bad .err{display:block}
+.fld.bad input{border-color:var(--red)}
+.actions{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:8px}
+.actions small{font-size:14px;max-width:28em}
+button.btn{cursor:pointer}
+.done{display:none;border:4px solid var(--indigo);background:var(--cream);padding:48px;flex-direction:column;gap:16px}
+.done.show{display:flex}
+.done h3{font-size:40px;color:var(--indigo)}
+.done p{max-width:32em}
+@media (max-width:1100px){.jhero h1{font-size:60px}.fwrap{grid-template-columns:minmax(0,1fr);gap:40px}}
+@media (max-width:768px){.jhero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.jhero h1{font-size:40px}.jhero .bn{font-size:26px}.next13{padding:24px}.next13 .num{font-size:80px}.h2dot{font-size:26px}.sgrid{grid-template-columns:minmax(0,1fr)}.step{padding:24px}.step h3{font-size:20px}form{grid-template-columns:minmax(0,1fr);padding:24px}.done{padding:24px}.done h3{font-size:28px}}
+</style>
+<link rel="stylesheet" href="netc-motion.css">
+<script src="netc-motion.js" defer></script>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="lockup" href="Home.html"><img src="assets/netc-primary-horizontal-colour.svg" alt="Never Ending Trail Club"></a><nav class="main"><a class="nl" href="Home.html#trips">Trips</a><a class="nl" href="Stories.html">Stories</a><a class="nl" href="About.html">About us</a><a class="btn" href="Join.html" aria-current="page">Join a trip</a></nav></div></header>
+<main>
+<section class="jhero on-indigo" data-screen-label="Join hero">
+<div class="wrap">
+<div>
+<span class="tag">Trip 13 · Being planned</span>
+<h1 class="disp">Come on the next one.</h1>
+<div class="bn">পরের যাত্রায় চলো</div>
+<p>Anyone is welcome. You don't need to know us yet, and you don't need gear. Tell us you're in and we'll send the plan when it's ready.</p>
+</div>
+<div class="next13">
+<div class="label" style="color:var(--turmeric-on-indigo)">Up next</div>
+<div class="num">13</div>
+<dl>
+<dt class="label">Where</dt><dd>[Place, still being decided]</dd>
+<dt class="label">When</dt><dd>[Month]</dd>
+<dt class="label">How</dt><dd>[Train · Road]</dd>
+<dt class="label">Days</dt><dd>[3 to 4]</dd>
+</dl>
+</div>
+</div>
+</section>
+<section class="steps" data-screen-label="How it works">
+<div class="wrap">
+<h2 class="h2dot">How a trip works</h2>
+<div class="sgrid">
+<div class="step"><div class="n">01</div><h3>Tell us you're in</h3><p>Fill in the form below. It takes a minute and doesn't commit you to anything.</p></div>
+<div class="step"><div class="n">02</div><h3>We send the plan</h3><p>Place, dates, how we get there and a rough cost, on WhatsApp or email.</p></div>
+<div class="step"><div class="n">03</div><h3>We go together</h3><p>We meet at the start, travel as a group, and the trip becomes the next story.</p></div>
+</div>
+</div>
+</section>
+<section class="formsec" id="form" data-screen-label="Join form">
+<div class="wrap fwrap">
+<div class="side">
+<h2 class="h2dot">I'm in</h2>
+<p>We'll only use this to send you trip plans. No newsletters, no spam.</p>
+<p class="bnl">বাংলা বা ইংরেজি, যেকোনো ভাষায় লিখতে পারো।</p>
+</div>
+<div>
+<form id="joinForm" novalidate>
+<div class="fld" id="f-name"><label for="name">Name</label><input type="text" id="name" autocomplete="name" required><span class="err">Tell us what to call you.</span></div>
+<div class="fld"><label for="city">City</label><input type="text" id="city" autocomplete="address-level2"></div>
+<div class="fld" id="f-phone"><label for="phone">WhatsApp</label><input type="tel" id="phone" autocomplete="tel" placeholder="+91"><span class="err">Add a WhatsApp number or an email.</span></div>
+<div class="fld" id="f-email"><label for="email">Email <span class="opt">(or WhatsApp)</span></label><input type="email" id="email" autocomplete="email"></div>
+<fieldset class="fld full"><legend>How do you like to travel? <span class="opt">(pick any)</span></legend>
+<div class="chips"><label><input type="checkbox" name="mode" value="Bike"><span>Bike</span></label><label><input type="checkbox" name="mode" value="Train"><span>Train</span></label><label><input type="checkbox" name="mode" value="Road"><span>Road</span></label><label><input type="checkbox" name="mode" value="Boat"><span>Boat</span></label><label><input type="checkbox" name="mode" value="Plane"><span>Plane</span></label><label><input type="checkbox" name="mode" value="Mountains"><span>Mountains</span></label></div>
+</fieldset>
+<fieldset class="fld full"><legend>Travelled with us before?</legend>
+<div class="chips"><label><input type="radio" name="before" value="no" checked><span>First trip</span></label><label><input type="radio" name="before" value="yes"><span>Been on one</span></label></div>
+</fieldset>
+<div class="fld full"><label for="note">Anything we should know <span class="opt">(optional)</span></label><textarea id="note" placeholder="Where you'd love to go, dates that don't work, food you can't eat"></textarea></div>
+<div class="actions"><small>We'll message you when the Trip 13 plan is ready.</small><button class="btn" type="submit">Join a trip</button></div>
+</form>
+<div class="done" id="done" role="status">
+<span class="tag">Trip 13 · You're in</span>
+<h3 class="disp">See you on the trail.</h3>
+<p id="doneMsg">We'll send the plan when it's ready.</p>
+<p><a href="Stories.html">Read the stories while you wait</a></p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site on-indigo"><div class="wrap"><div class="top"><div><img class="flogo" src="assets/netc-alternate-bilingual-reverse.svg" alt="Never Ending Trail Club · নেভার এন্ডিং ট্রেল ক্লাব"></div><div><div class="label h">Club</div><ul><li><a href="Home.html#trips">Trips</a></li><li><a href="Stories.html">Stories</a></li><li><a href="About.html">About us</a></li><li><a href="Join.html">Join a trip</a></li></ul></div><div><div class="label h">Follow</div><ul><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li><li><a href="#">Facebook</a></li></ul></div></div><div class="bot"><span>Travel · Stories · Friends</span><span class="label">Trip 12 and counting</span></div></div></footer>
+<script>
+const f=document.getElementById('joinForm');
+f.addEventListener('submit',e=>{e.preventDefault();
+const name=f.name.value.trim(),ph=f.phone.value.trim(),em=f.email.value.trim();
+document.getElementById('f-name').classList.toggle('bad',!name);
+document.getElementById('f-phone').classList.toggle('bad',!ph&&!em);
+if(!name||(!ph&&!em)){(!name?f.name:f.phone).focus();return}
+document.getElementById('doneMsg').textContent=`Thanks, ${name}. We'll send the Trip 13 plan to ${ph||em} when it's ready.`;
+f.style.display='none';const d=document.getElementById('done');d.classList.add('show');d.setAttribute('tabindex','-1');d.focus();});
+</script>
+</body>
+</html>

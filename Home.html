@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Never Ending Trail Club</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,600;62..125,800&family=IBM+Plex+Mono:wght@600&family=Anek+Bangla:wght@500;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+:root{--indigo:#23325E;--red:#C9372C;--red-on-indigo:#E0503F;--turmeric:#E3A21A;--turmeric-on-indigo:#EDB22A;--cream:#F1E9D8;--paper:#FBF8F1;--ink:#16130F;--display:"Archivo","Arial Black",sans-serif;--mono:"IBM Plex Mono","Courier New",monospace;--bn:"Anek Bangla",sans-serif;--sec:96px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:400 18px/1.5 var(--display);font-stretch:100%;-webkit-font-smoothing:antialiased}
+a{color:var(--red);text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+a:hover{color:var(--indigo)}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+.on-indigo :focus-visible{outline-color:var(--turmeric-on-indigo)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.disp{font-family:var(--display);font-stretch:125%;font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:0}
+.label{font:600 14px/1.2 var(--mono);text-transform:uppercase;letter-spacing:3px}
+.tag{display:inline-flex;font:600 14px/1 var(--mono);letter-spacing:3px;text-transform:uppercase;background:var(--turmeric);color:var(--indigo);padding:8px 10px}
+.on-indigo .tag.bare{background:none;color:var(--turmeric-on-indigo);padding:0}
+.btn{display:inline-flex;align-items:center;font:600 16px/1 var(--display);padding:16px 24px;text-decoration:none;border:2px solid var(--red);background:var(--red);color:var(--paper);transition:background .15s,border-color .15s,color .15s}
+.btn:hover{background:var(--indigo);border-color:var(--indigo);color:var(--paper)}
+.btn.ghost{background:none;color:var(--indigo);border-color:var(--indigo)}
+.btn.ghost:hover{background:var(--indigo);color:var(--cream)}
+.on-indigo .btn.ghost{color:var(--cream);border-color:var(--cream)}
+.on-indigo .btn.ghost:hover{background:var(--cream);color:var(--indigo)}
+/* header */
+header{background:var(--paper);border-bottom:2px solid var(--indigo)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:88px}
+.lockup{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--indigo)}
+.lockup img{height:48px;width:auto;display:block}
+nav{display:flex;align-items:center;gap:32px}
+nav a.nl{color:var(--indigo);text-decoration:none;font-weight:600;font-size:16px;border-bottom:2px solid transparent;padding:4px 0;transition:border-color .15s}
+nav a.nl:hover{border-color:var(--red)}
+/* hero */
+.hero{background:var(--indigo);color:var(--cream);padding:var(--sec) 0}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
+.hero h1{font-size:84px;margin:24px 0 28px;text-wrap:balance}
+.hero p{max-width:30em;font-size:18px;color:var(--cream)}
+.hero .bn{font-family:var(--bn);font-weight:500;display:block;margin-top:8px}
+.hero .ctas{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+.hero .btn{background:var(--cream);border-color:var(--cream);color:var(--indigo)}
+.hero .btn:hover{background:var(--turmeric-on-indigo);border-color:var(--turmeric-on-indigo)}
+.frame{border:8px solid var(--indigo);background:var(--cream);position:relative}
+.hero .frame{border-color:var(--cream);aspect-ratio:4/3}
+.hero-art{position:relative}
+.hero-art .sun{position:absolute;width:64px;height:64px;border-radius:50%;background:var(--turmeric-on-indigo);top:-32px;right:64px;z-index:2}
+.hero-art .cap{display:flex;justify-content:space-between;margin-top:16px;color:var(--cream)}
+/* route divider */
+.route{display:block;width:100%;height:56px;overflow:visible}
+/* about */
+.about{padding:var(--sec) 0 0}
+.about .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:64px}
+.about h2{font:600 36px/1.2 var(--display);color:var(--indigo);max-width:22em;text-wrap:pretty}
+.about .modes{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:32px;color:var(--indigo)}
+/* trips */
+.trips{padding:var(--sec) 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:48px}
+.sec-head .disp{font-size:56px;color:var(--indigo)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 32px}
+.card{display:flex;flex-direction:column;gap:16px;text-decoration:none;color:var(--ink)}
+.card .frame{aspect-ratio:1/1;border-width:6px;transition:border-color .15s}
+.card:hover .frame{border-color:var(--red)}
+.card h3{font:600 24px/1.25 var(--display);color:var(--indigo)}
+.card p{font-size:16px;color:var(--ink)}
+.card .meta{color:var(--indigo)}
+/* scroll strip */
+.scroll{background:var(--cream);padding:var(--sec) 0;border-top:2px solid var(--indigo);border-bottom:2px solid var(--indigo)}
+.scroll .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.scroll h2{font-size:56px;color:var(--indigo);margin:20px 0 24px}
+.scroll p{max-width:34em}
+.scroll p+p{margin-top:16px}
+.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:6px solid var(--indigo)}
+.panels > div{aspect-ratio:3/4;border-right:6px solid var(--indigo);position:relative}
+.panels > div:last-child{border-right:0}
+.panels .n{position:absolute;left:8px;bottom:8px;z-index:2;pointer-events:none}
+/* join */
+.join{padding:var(--sec) 0;text-align:left}
+.join .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.join h2{font-size:56px;color:var(--indigo)}
+.join p{margin-top:16px;max-width:32em}
+/* footer */
+footer{background:var(--indigo);color:var(--cream);padding:72px 0 40px}
+footer .top{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+footer .flogo{display:block;width:100%;max-width:360px;height:auto}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:16px}
+footer a{color:var(--cream)}
+footer a:hover{color:var(--turmeric-on-indigo)}
+footer .h{color:var(--turmeric-on-indigo)}
+footer .bot{display:flex;justify-content:space-between;gap:24px;margin-top:64px;padding-top:24px;border-top:2px solid rgba(241,233,216,.25);font-size:16px;flex-wrap:wrap}
+@media (max-width:768px){
+:root{--sec:56px}
+body{font-size:16px}
+.wrap{padding:0 20px}
+header .wrap{height:72px}
+.lockup img{height:40px}
+nav{gap:16px}nav a.nl{display:none}
+.btn{padding:14px 18px;font-size:15px}
+.label,.tag{font-size:12px}
+.hero .wrap,.about .wrap,.scroll .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
+.hero h1{font-size:40px}
+.about h2{font-size:26px}
+.sec-head .disp,.scroll h2,.join h2{font-size:32px}
+.sec-head{flex-direction:column;align-items:start}
+.grid{grid-template-columns:minmax(0,1fr)}
+.card h3{font-size:20px}
+footer .top{grid-template-columns:minmax(0,1fr)}
+}
+@media (min-width:769px) and (max-width:1100px){.hero h1{font-size:60px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.h2dot{display:flex;align-items:center;gap:16px;font:600 36px/1.2 var(--display);color:var(--indigo)}
+.h2dot::before{content:"";width:20px;height:20px;border-radius:50%;background:var(--turmeric);flex:none}
+.trips .sec-head{align-items:center;margin-bottom:32px}
+.stops{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;height:40px;margin-bottom:32px}
+.stops::before{content:"";position:absolute;left:0;right:48px;top:50%;height:4px;margin-top:-2px;background:var(--red);border-radius:2px}
+.stops::after{content:"";position:absolute;right:0;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--red);box-shadow:-22px 0 0 var(--red)}
+.stops span{position:relative;justify-self:center;align-self:center;width:28px;height:28px;border-radius:50%;border:4px solid var(--indigo);background:var(--paper)}
+.stops span.now{background:var(--turmeric)}
+.tgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.tcard{display:flex;flex-direction:column;border:4px solid var(--indigo);background:var(--paper);transition:border-color .15s}
+.tcard:hover{border-color:var(--red)}
+.tcard .ph{aspect-ratio:4/3;border-bottom:4px solid var(--indigo)}
+.tcard .bd{background:var(--cream);padding:32px;display:flex;flex-direction:column;gap:16px;flex:1}
+.tcard h3{font:600 24px/1.25 var(--display);color:var(--indigo)}
+.tcard p{font-size:16px}
+.tcard a{font-weight:600;font-size:16px;margin-top:auto}
+.tell{padding:0 0 var(--sec)}
+.tell .h2dot{margin-bottom:48px}
+.cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.chan{border:4px solid var(--indigo);padding:32px;display:flex;flex-direction:column;gap:16px}
+.chan .ph{aspect-ratio:16/9;border:2px solid var(--indigo);margin-bottom:8px}
+.chan .ic{height:56px;display:flex;align-items:center}
+.chan .lbl{color:var(--indigo)}
+.chan h3{font:600 24px/1.25 var(--display);color:var(--indigo)}
+.chan p{font-size:16px}
+.chan a{font-weight:600;font-size:16px;margin-top:auto}
+@media (max-width:1100px){.tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.stops{display:none}.cgrid{grid-template-columns:minmax(0,1fr)}.chan{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px}.chan .ph{grid-row:span 6;margin:0}}
+@media (max-width:768px){.h2dot{font-size:26px}.stops{display:none}.tgrid{grid-template-columns:minmax(0,1fr)}.tcard .bd,.chan{padding:24px}.tcard h3,.chan h3{font-size:20px}.chan{display:flex}}
+</style>
+<link rel="stylesheet" href="netc-motion.css">
+<script src="netc-motion.js" defer></script>
+</head>
+<body>
+<header>
+<div class="wrap">
+<a class="lockup" href="#"><img src="assets/netc-primary-horizontal-colour.svg" alt="Never Ending Trail Club"></a>
+<nav><a class="nl" href="#trips">Trips</a><a class="nl" href="Stories.html">Stories</a><a class="nl" href="About.html">About us</a><a class="btn" href="Join.html">Join a trip</a></nav>
+</div>
+</header>
+<section class="hero on-indigo" data-screen-label="Hero">
+<div class="wrap">
+<div>
+<span class="tag">Trip 12 · [Place]</span>
+<h1 class="disp">Every trip is a frame.</h1>
+<p>We are a group of Bengali friends who travel anywhere, by any means. Every trip becomes one panel of a scroll that keeps going.<span class="bn">প্রতিটি যাত্রা একটি ফ্রেম।</span></p>
+<div class="ctas"><a class="btn" href="Story.html">Read the story</a></div>
+</div>
+<div class="hero-art">
+<div class="sun" aria-hidden="true"></div>
+<div class="frame"><image-slot id="hero-trip12" shape="rect" placeholder="Group photo from Trip 12"></image-slot></div>
+<div class="cap label"><span>Trip 12 · [Place]</span><span>[Date]</span></div>
+</div>
+</div>
+</section>
+<section class="about" data-screen-label="Who we are">
+<div class="wrap">
+<div class="label" style="color:var(--indigo)">01 / Who we are</div>
+<div>
+<h2>A travel club, not a company. We go together, we get lost together, and we tell it the way it happened.</h2>
+<div class="modes label"><span>Bike</span><span>Train</span><span>Road</span><span>Boat</span><span>Plane</span><span>Mountains</span></div>
+</div>
+</div>
+</section>
+<div class="wrap" aria-hidden="true" style="padding-top:56px"><svg class="flow" aria-hidden="true"></svg></div>
+<section class="trips" id="trips" data-screen-label="Trips">
+<div class="wrap">
+<div class="sec-head"><h2 class="h2dot">Latest trips</h2><a href="#">All trips</a></div>
+<div class="stops" aria-hidden="true"><span class="now"></span><span></span><span></span></div>
+<div class="tgrid" id="tripGrid"></div>
+</div>
+</section>
+<section class="tell" data-screen-label="Where we tell it">
+<div class="wrap">
+<h2 class="h2dot">Where we tell it</h2>
+<div class="cgrid">
+<div class="chan"><div class="ph"><image-slot id="chan-youtube" shape="rect" placeholder="Latest video thumbnail"></image-slot></div><div class="ic"><svg width="48" height="48" viewBox="116 46 36 36" aria-hidden="true"><circle cx="134" cy="64" r="18" fill="#E3A21A"></circle></svg></div><div class="label lbl">YouTube</div><h3>The vlogs</h3><p>The whole trip, wrong turns included. Watch us get lost and find the tea stall.</p><a href="#">[@CHANNEL] on YouTube</a></div>
+<div class="chan"><div class="ph"><image-slot id="chan-instagram" shape="rect" placeholder="Latest Instagram post"></image-slot></div><div class="ic"><svg width="55" height="55" viewBox="16 16 168 168" aria-hidden="true"><path d="M176 80V24H24V176H176V136" fill="none" stroke="#23325E" stroke-width="16"></path></svg></div><div class="label lbl">Instagram</div><h3>The scroll</h3><p>Every photo in its frame. Scroll the grid and it reads like one long painting.</p><a href="#">[@HANDLE] on Instagram</a></div>
+<div class="chan"><div class="ph"><image-slot id="chan-blog" shape="rect" placeholder="Latest story cover"></image-slot></div><div class="ic"><svg width="51" height="19" viewBox="40 100 154 58" aria-hidden="true"><path d="M48 150C80 150 96 108 130 108H140" fill="none" stroke="#C9372C" stroke-width="16" stroke-linecap="round"></path><circle cx="164" cy="108" r="8" fill="#C9372C"></circle><circle cx="186" cy="108" r="8" fill="#C9372C"></circle></svg></div><div class="label lbl">Blog</div><h3>The long version</h3><p>Written up after we're home. The places, the people, and the tips worth passing on.</p><a href="Stories.html">Read the blog</a></div>
+</div>
+</div>
+</section>
+<section class="scroll" id="stories" data-screen-label="The scroll">
+<div class="wrap">
+<div>
+<span class="tag">Pattachitra</span>
+<h2 class="disp">One panel of an endless scroll.</h2>
+<p>A Patua painter tells a story panel by panel along a long scroll of cloth. We tell ours the same way. One trip, one frame, and the route always walks out the side toward the next one.</p>
+<p>Every story opens with its trip number, so every post, reel and video joins the same scroll.</p>
+<p style="margin-top:24px"><a href="Stories.html">Read the stories</a></p>
+</div>
+<div class="panels">
+<div><image-slot id="panel-a" shape="rect" placeholder="Trip photo"></image-slot><span class="tag n">Trip 10</span></div>
+<div><image-slot id="panel-b" shape="rect" placeholder="Trip photo"></image-slot><span class="tag n">Trip 11</span></div>
+<div><image-slot id="panel-c" shape="rect" placeholder="Trip photo"></image-slot><span class="tag n">Trip 12</span></div>
+</div>
+</div>
+</section>
+<section class="join" id="join" data-screen-label="Join">
+<div class="wrap">
+<div><h2 class="disp">Come on the next one.</h2><p>Trip 13 is being planned. Tell us you're in and we'll send the details.</p></div>
+<a class="btn" href="#">Join a trip</a>
+</div>
+</section>
+<footer class="on-indigo">
+<div class="wrap">
+<div class="top">
+<div><img class="flogo" src="assets/netc-alternate-bilingual-reverse.svg" alt="Never Ending Trail Club · নেভার এন্ডিং ট্রেল ক্লাব"></div>
+<div><div class="label h">Club</div><ul><li><a href="#trips">Trips</a></li><li><a href="Stories.html">Stories</a></li><li><a href="About.html">About us</a></li><li><a href="Join.html">Join a trip</a></li></ul></div>
+<div><div class="label h">Follow</div><ul><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li><li><a href="#">Facebook</a></li></ul></div>
+</div>
+<div class="bot"><span>Travel · Stories · Friends</span><span class="label">Trip 12 and counting</span></div>
+</div>
+</footer>
+<script>
+const trips=[11,10,9];
+document.getElementById('tripGrid').innerHTML=trips.map(n=>{const nn=String(n).padStart(2,'0');return `<article class="tcard" id="trip-${nn}"><div class="ph"><image-slot id="trip-${nn}-photo" shape="rect" placeholder="Trip ${nn} photo"></image-slot></div><div class="bd"><span class="tag">Trip ${nn} · [Place]</span><h3>[Trip title, sentence case]</h3><p>[One line on what happened. Place first, then the moment.]</p><a href="Story.html">Read the story</a></div></article>`}).join('');
+</script>
+</body>
+</html>

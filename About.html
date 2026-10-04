@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About us · Never Ending Trail Club</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,600;62..125,800&family=IBM+Plex+Mono:wght@600&family=Anek+Bangla:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="netc.css">
+<script src="image-slot.js"></script>
+<style>
+.h2dot{display:flex;align-items:center;gap:16px;font:600 36px/1.2 var(--display);color:var(--indigo)}
+.h2dot::before{content:"";width:20px;height:20px;border-radius:50%;background:var(--turmeric);flex:none}
+.ahero{background:var(--indigo);color:var(--cream);padding:var(--sec) 0}
+.ahero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center}
+.ahero .label{color:var(--turmeric-on-indigo)}
+.ahero h1{font-size:84px;margin:20px 0 8px}
+.ahero .bn{font:700 36px/1.2 var(--bn);color:var(--cream)}
+.ahero p{margin-top:28px;max-width:32em}
+.ahero .frame{border-color:var(--cream);aspect-ratio:4/3}
+.ahero .cap{margin-top:12px;font-size:16px}
+.idea{padding:var(--sec) 0}
+.idea .intro{max-width:40em;margin:24px 0 56px}
+.igrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.icard{border:4px solid var(--indigo);padding:32px;display:flex;flex-direction:column;gap:16px}
+.icard .ic{height:56px;display:flex;align-items:center}
+.icard h3{font:600 24px/1.25 var(--display);color:var(--indigo)}
+.icard p{font-size:16px}
+.crew{background:var(--cream);border-top:2px solid var(--indigo);border-bottom:2px solid var(--indigo);padding:var(--sec) 0}
+.crew .top{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.crew .top p{max-width:30em;margin-top:16px}
+.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px}
+.member{display:flex;flex-direction:column;gap:12px}
+.member .frame{aspect-ratio:4/5;border-width:6px;background:var(--paper);transition:border-color .18s}
+.member:hover .frame{border-color:var(--red)}
+.member h3{font:600 24px/1.2 var(--display);color:var(--indigo);transition:color .18s}
+.member:hover h3{color:var(--red)}
+.member .bn{font:500 20px/1.2 var(--bn);color:var(--indigo);margin-top:-6px}
+.member p{font-size:16px}
+.member .since{color:var(--indigo)}
+.member .tag{margin-top:4px}
+.join{padding:var(--sec) 0}
+.join .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.join h2{font-size:56px;color:var(--indigo)}
+.join p{margin-top:16px;max-width:32em}
+@media (max-width:1100px){.mgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.ahero h1{font-size:60px}}
+@media (max-width:768px){.ahero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.ahero h1{font-size:40px}.ahero .bn{font-size:26px}.h2dot{font-size:26px}.igrid{grid-template-columns:minmax(0,1fr)}.icard{padding:24px}.icard h3,.member h3{font-size:20px}.mgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}.member .bn{font-size:18px}.join h2{font-size:32px}}
+</style>
+<link rel="stylesheet" href="netc-motion.css">
+<script src="netc-motion.js" defer></script>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="lockup" href="Home.html"><img src="assets/netc-primary-horizontal-colour.svg" alt="Never Ending Trail Club"></a><nav class="main"><a class="nl" href="Home.html#trips">Trips</a><a class="nl" href="Stories.html">Stories</a><a class="nl" href="About.html" aria-current="page">About us</a><a class="btn" href="Join.html">Join a trip</a></nav></div></header>
+<main>
+<section class="ahero on-indigo" data-screen-label="About hero">
+<div class="wrap">
+<div>
+<div class="label">01 / Who we are</div>
+<h1 class="disp">Every trip is a frame.</h1>
+<div class="bn">নেভার এন্ডিং ট্রেল ক্লাব</div>
+<p>A group of friends who travel anywhere, by any means: bike, train, road, boat, plane, mountains. Every trip becomes a story on our social pages, YouTube, blog and vlogs.</p>
+</div>
+<div><div class="frame"><image-slot id="about-group" shape="rect" placeholder="The whole group, on a trip"></image-slot></div><div class="cap">[Caption: where this was, and which trip.]</div></div>
+</div>
+</section>
+<section class="idea" data-screen-label="The idea">
+<div class="wrap">
+<h2 class="h2dot">Frame, sun, route</h2>
+<p class="intro">Pattachitra, Bengal's scroll painting, is how we tell it. A Patua painter tells a story panel by panel along one long scroll. Each of our trips is one panel.</p>
+<div class="igrid">
+<div class="icard"><div class="ic"><svg width="55" height="55" viewBox="16 16 168 168" aria-hidden="true"><path d="M176 80V24H24V176H176V136" fill="none" stroke="#23325E" stroke-width="16"></path></svg></div><div class="label" style="color:var(--indigo)">The frame</div><h3>One trip, one story</h3><p>One panel of a Patua scroll. Every photo we post sits inside it.</p></div>
+<div class="icard"><div class="ic"><svg width="48" height="48" viewBox="116 46 36 36" aria-hidden="true"><circle cx="134" cy="64" r="18" fill="#E3A21A"></circle></svg></div><div class="label" style="color:var(--indigo)">The sun</div><h3>The early start</h3><p>The adventure, and the next place we haven't been yet.</p></div>
+<div class="icard"><div class="ic"><svg width="51" height="19" viewBox="40 100 154 58" aria-hidden="true"><path d="M48 150C80 150 96 108 130 108H140" fill="none" stroke="#C9372C" stroke-width="16" stroke-linecap="round"></path><circle cx="164" cy="108" r="8" fill="#C9372C"></circle><circle cx="186" cy="108" r="8" fill="#C9372C"></circle></svg></div><div class="label" style="color:var(--indigo)">The route</div><h3>However we got there</h3><p>It walks out of the frame and keeps going: never ending.</p></div>
+</div>
+</div>
+</section>
+<section class="crew" data-screen-label="Members">
+<div class="wrap">
+<div class="top"><div><h2 class="h2dot">The crew</h2><p>The friends behind every trip. Different jobs on the road, one story at the end.</p></div><span class="label" style="color:var(--indigo)">Trip 12 and counting</span></div>
+<div class="mgrid" id="mgrid"></div>
+</div>
+</section>
+<section class="join" data-screen-label="Join">
+<div class="wrap">
+<div><h2 class="disp">Come on the next one.</h2><p>Trip 13 is being planned. Tell us you're in and we'll send the details.</p></div>
+<a class="btn" href="Join.html">Join a trip</a>
+</div>
+</section>
+</main>
+<footer class="site on-indigo"><div class="wrap"><div class="top"><div><img class="flogo" src="assets/netc-alternate-bilingual-reverse.svg" alt="Never Ending Trail Club · নেভার এন্ডিং ট্রেল ক্লাব"></div><div><div class="label h">Club</div><ul><li><a href="Home.html#trips">Trips</a></li><li><a href="Stories.html">Stories</a></li><li><a href="About.html">About us</a></li><li><a href="Join.html">Join a trip</a></li></ul></div><div><div class="label h">Follow</div><ul><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li><li><a href="#">Facebook</a></li></ul></div></div><div class="bot"><span>Travel · Stories · Friends</span><span class="label">Trip 12 and counting</span></div></div></footer>
+<script>
+const crew=Array.from({length:8},(_,i)=>i+1);
+document.getElementById('mgrid').innerHTML=crew.map(i=>`<div class="member"><div class="frame"><image-slot id="member-${i}" shape="rect" placeholder="Member photo, on a trip"></image-slot></div><h3>[Name]</h3><div class="bn">[নাম]</div><p>[Their job on the road: the map reader, the one with the camera, the tea finder.]</p><div class="label since">Since Trip [01] · [Home town]</div></div>`).join('');
+</script>
+</body>
+</html>
