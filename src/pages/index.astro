@@ -15,7 +15,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="hero-art">
         <div class="sun" aria-hidden="true"></div>
-        <div class="frame"><image-slot id="hero-trip12" shape="rect" placeholder="Group photo from Trip 12"></image-slot></div>
+        <div class="frame"><span class="slot">Group photo from Trip 12</span></div>
         <div class="cap label"><span>Trip 12 · Bengal</span><span>September 2026</span></div>
       </div>
     </div>
@@ -46,7 +46,7 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="h2dot">Where we tell it</h2>
       <div class="cgrid">
         <div class="chan">
-          <div class="ph"><image-slot id="chan-youtube" shape="rect" placeholder="Latest video thumbnail"></image-slot></div>
+          <div class="ph"><span class="slot">Latest video thumbnail</span></div>
           <div class="ic">
             <svg width="48" height="48" viewBox="116 46 36 36" aria-hidden="true"><circle cx="134" cy="64" r="18" fill="#E3A21A"></circle></svg>
           </div>
@@ -56,7 +56,7 @@ import Layout from '../layouts/Layout.astro';
           <a href="https://youtube.com">Subscribe on YouTube</a>
         </div>
         <div class="chan">
-          <div class="ph"><image-slot id="chan-instagram" shape="rect" placeholder="Latest Instagram post"></image-slot></div>
+          <div class="ph"><span class="slot">Latest Instagram post</span></div>
           <div class="ic">
             <svg width="55" height="55" viewBox="16 16 168 168" aria-hidden="true"><path d="M176 80V24H24V176H176V136" fill="none" stroke="#23325E" stroke-width="16"></path></svg>
           </div>
@@ -66,7 +66,7 @@ import Layout from '../layouts/Layout.astro';
           <a href="https://instagram.com">Follow on Instagram</a>
         </div>
         <div class="chan">
-          <div class="ph"><image-slot id="chan-blog" shape="rect" placeholder="Latest story cover"></image-slot></div>
+          <div class="ph"><span class="slot">Latest story cover</span></div>
           <div class="ic">
             <svg width="51" height="19" viewBox="40 100 154 58" aria-hidden="true"><path d="M48 150C80 150 96 108 130 108H140" fill="none" stroke="#C9372C" stroke-width="16" stroke-linecap="round"></path><circle cx="164" cy="108" r="8" fill="#C9372C"></circle><circle cx="186" cy="108" r="8" fill="#C9372C"></circle></svg>
           </div>
@@ -89,9 +89,9 @@ import Layout from '../layouts/Layout.astro';
         <p style="margin-top:24px"><a href="/stories">Read the stories</a></p>
       </div>
       <div class="panels">
-        <div><image-slot id="panel-a" shape="rect" placeholder="Trip photo"></image-slot><span class="tag n">Trip 10</span></div>
-        <div><image-slot id="panel-b" shape="rect" placeholder="Trip photo"></image-slot><span class="tag n">Trip 11</span></div>
-        <div><image-slot id="panel-c" shape="rect" placeholder="Trip photo"></image-slot><span class="tag n">Trip 12</span></div>
+        <div><span class="slot">Trip photo</span><span class="tag n">Trip 10</span></div>
+        <div><span class="slot">Trip photo</span><span class="tag n">Trip 11</span></div>
+        <div><span class="slot">Trip photo</span><span class="tag n">Trip 12</span></div>
       </div>
     </div>
   </section>
@@ -113,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
   document.getElementById('tripGrid').innerHTML = trips
     .map((trip) => {
       const nn = String(trip.num).padStart(2, '0');
-      return `<article class="tcard" id="trip-${nn}"><div class="ph"><image-slot id="trip-${nn}-photo" shape="rect" placeholder="Trip ${nn} photo"></image-slot></div><div class="bd"><span class="tag">Trip ${nn} · ${trip.place}</span><h3>${trip.title}</h3><p>${trip.desc}</p><a href="/story">Read the story</a></div></article>`;
+      return `<article class="tcard" id="trip-${nn}"><div class="ph"><span class="slot">Trip ${nn} photo</span></div><div class="bd"><span class="tag">Trip ${nn} · ${trip.place}</span><h3>${trip.title}</h3><p>${trip.desc}</p><a href="/story">Read the story</a></div></article>`;
     })
     .join('');
 </script>

@@ -13,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="byline label"><span>[Date]</span><span>Train · Road</span><span>6 friends</span><span>8 min read</span></div>
     </div>
     <div class="shero" data-screen-label="Story hero">
-      <div class="frame"><image-slot id="story12-hero" shape="rect" placeholder="Hero photo: the whole group, on location"></image-slot></div>
+      <div class="frame"><span class="slot">Hero photo: the whole group, on location</span></div>
       <div class="cap"><span>[Caption in sentence case. Who, where, what was happening.]</span><span class="label" style="color:var(--indigo)">Trip 12 · [Place]</span></div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
         <p>[Opening paragraph. Start with the place and the moment we arrived. Told as we: we went, we got lost, we found the tea stall.]</p>
         <p>[Second paragraph. What we had planned, and what actually happened instead.]</p>
         <figure>
-          <div class="frame"><image-slot id="story12-fig1" shape="rect" placeholder="Photo from the journey"></image-slot></div>
+          <div class="frame"><span class="slot">Photo from the journey</span></div>
           <figcaption><span>[Caption in English.]</span><span class="bn" lang="bn">[বাংলা ক্যাপশন]</span></figcaption>
         </figure>
         <h2>[Section heading]</h2>
@@ -31,8 +31,8 @@ import Layout from '../layouts/Layout.astro';
         <p>[Keep paragraphs short. Bangla words sit in the running text at the same size, like <span class="bn" lang="bn">চা</span>, never a stiff translation.]</p>
         <div class="pull"><p>[A line someone said on the trip.]</p><span class="bn" lang="bn">[বাংলায় একই কথা]</span></div>
         <div class="pair">
-          <div class="frame"><image-slot id="story12-pair-a" shape="rect" placeholder="Photo"></image-slot></div>
-          <div class="frame"><image-slot id="story12-pair-b" shape="rect" placeholder="Photo"></image-slot></div>
+          <div class="frame"><span class="slot">Photo</span></div>
+          <div class="frame"><span class="slot">Photo</span></div>
         </div>
         <h2>[Section heading]</h2>
         <p>[The way home, and the thing we'd do differently. Facts and tips go in the box, not here.]</p>
@@ -55,8 +55,8 @@ import Layout from '../layouts/Layout.astro';
       <div class="nh"><div><div class="label">The scroll keeps going</div><h2 class="disp">Next on the scroll</h2></div><a href="/stories">All stories</a></div>
       <div class="nstops" aria-hidden="true"><span></span><span class="now"></span><span></span></div>
       <div class="ncards">
-        <div class="ncard"><a class="ph" href="/story" aria-label="Trip 11 story"><image-slot id="story11-thumb" shape="rect" placeholder="Trip 11 photo"></image-slot></a><span class="tg">Previous · Trip 11 · [Place]</span><h3>[Trip story headline]</h3><a class="lk" href="/story">Read the story</a></div>
-        <div class="ncard here"><div class="ph"><image-slot id="story12-thumb" shape="rect" placeholder="Trip 12 photo"></image-slot></div><span class="tg">You're here · Trip 12 · [Place]</span><h3>[Trip story headline]</h3><a class="lk" href="#">Read the story</a></div>
+        <div class="ncard"><a class="ph" href="/story" aria-label="Trip 11 story"><span class="slot">Trip 11 photo</span></a><span class="tg">Previous · Trip 11 · [Place]</span><h3>[Trip story headline]</h3><a class="lk" href="/story">Read the story</a></div>
+        <div class="ncard here"><div class="ph"><span class="slot">Trip 12 photo</span></div><span class="tg">You're here · Trip 12 · [Place]</span><h3>[Trip story headline]</h3><a class="lk" href="#">Read the story</a></div>
         <div class="ncard soon"><div class="ph"><span>13</span></div><span class="tg">Up next · Trip 13</span><h3>Being planned now</h3><p>Where, when and how we get there is still open. Tell us you're in.</p><a class="btn" href="/join">Join a trip</a></div>
       </div>
     </div>

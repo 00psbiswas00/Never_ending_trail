@@ -1,13 +1,9 @@
 (function(){
 const sel='.route,.stops,.nstops,.trail,.flow';
-const vh=()=>Math.min(innerHeight,document.documentElement.clientHeight||innerHeight,(window.visualViewport&&visualViewport.height)||innerHeight);
 const fire=el=>{if(!el.classList.contains('in'))requestAnimationFrame(()=>el.classList.add('in'))};
-let io=null;
-if('IntersectionObserver' in window){io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&en.intersectionRatio>=.6){fire(en.target)}else if(!en.isIntersecting){en.target.classList.remove('in')}}),{threshold:[0,.6,1],rootMargin:'0px 0px -10% 0px'})}
-const watch=()=>document.querySelectorAll(sel).forEach(el=>{if(el.dataset.w)return;el.dataset.w=1;if(io)io.observe(el)});
-const check=()=>{watch();if(io)return;document.querySelectorAll(sel).forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vh()*.85&&r.bottom>0)fire(el);else if(r.bottom<0||r.top>vh())el.classList.remove('in')})};
-addEventListener('scroll',check,{passive:true,capture:true});
-document.addEventListener('DOMContentLoaded',check);
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&en.intersectionRatio>=.6){fire(en.target)}else if(!en.isIntersecting){en.target.classList.remove('in')}}),{threshold:[0,.6,1],rootMargin:'0px 0px -10% 0px'});
+const watch=()=>document.querySelectorAll(sel).forEach(el=>{if(el.dataset.w)return;el.dataset.w=1;io.observe(el)});
+document.addEventListener("DOMContentLoaded",watch);
 const NS='http://www.w3.org/2000/svg';
 const build=()=>{document.querySelectorAll('.flow').forEach(svg=>{const W=Math.max(200,svg.clientWidth),H=40,y1=32,y2=10,e=W-70;
 svg.setAttribute('viewBox','0 0 '+W+' '+H);
@@ -18,6 +14,6 @@ const col=svg.dataset.color||'#C9372C';p.setAttribute('stroke',col);p.setAttribu
 const cs=svg.querySelectorAll('circle');cs[0].setAttribute('cx',e+28);cs[1].setAttribute('cx',e+54);cs.forEach(c=>{c.setAttribute('cy',y2);c.setAttribute('fill',col)});
 svg.style.setProperty('--len',Math.ceil(p.getTotalLength()+10))})};
 addEventListener('resize',build);document.addEventListener('DOMContentLoaded',build);build();
-document.addEventListener('click',e=>{const c=e.target.closest('.tcard,.chan');if(!c||e.target.closest('a,image-slot'))return;const a=c.querySelector('a[href]');if(a)location.href=a.href});
-check();
+document.addEventListener('click',e=>{const c=e.target.closest('.tcard,.chan');if(!c||e.target.closest('a'))return;const a=c.querySelector('a[href]');if(a)location.href=a.href});
+watch();
 })();

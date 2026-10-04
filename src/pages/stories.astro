@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
   <section data-screen-label="Featured story">
     <div class="wrap">
       <a class="feature" href="/story">
-        <div class="frame"><image-slot id="story-12-hero" shape="rect" placeholder="Trip 12 hero photo"></image-slot></div>
+        <div class="frame"><span class="slot">Trip 12 hero photo</span></div>
         <div class="txt">
           <span class="tag">Trip 12 · [Place]</span>
           <h2 class="disp">[Trip story headline]</h2>
@@ -69,7 +69,7 @@ import Layout from '../layouts/Layout.astro';
 <script>
   const modes=['All','Bike','Train','Road','Boat','Plane','Mountains'];
   const stories=[[11,'Road'],[10,'Boat'],[9,'Mountains'],[8,'Bike'],[7,'Train'],[6,'Plane']];
-  document.getElementById('grid').innerHTML=stories.map(([n,m])=>{const nn=String(n).padStart(2,'0');return `<a class="card" href="/story" data-mode="${m}"><div class="frame"><image-slot id="story-${nn}-photo" shape="rect" placeholder="Trip ${nn} photo"></image-slot></div><span class="tag">Trip ${nn} · [Place]</span><h3>[Trip story headline]</h3><p>[Opening line of the story.]</p><div class="label meta">[Date] · ${m}</div></a>`}).join('');
+  document.getElementById('grid').innerHTML=stories.map(([n,m])=>{const nn=String(n).padStart(2,'0');return `<a class="card" href="/story" data-mode="${m}"><div class="frame"><span class="slot">Trip ${nn} photo</span></div><span class="tag">Trip ${nn} · [Place]</span><h3>[Trip story headline]</h3><p>[Opening line of the story.]</p><div class="label meta">[Date] · ${m}</div></a>`}).join('');
   const f=document.getElementById('filters');
   f.innerHTML=modes.map((m,i)=>`<button type="button" aria-pressed="${i===0}" data-m="${m}">${m}</button>`).join('');
   f.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;f.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));let shown=0;document.querySelectorAll('.card').forEach(c=>{const ok=b.dataset.m==='All'||c.dataset.mode===b.dataset.m;c.hidden=!ok;if(ok)shown++});document.getElementById('empty').style.display=shown?'none':'block'});

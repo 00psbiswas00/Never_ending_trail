@@ -222,6 +222,22 @@ footer.site .bot {
   position: relative;
 }
 
+/* Photo placeholder until real images land; swap the span for <img alt> */
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--indigo);
+  background: var(--cream);
+  outline: 1px dashed rgba(35, 50, 94, 0.35);
+  outline-offset: -8px;
+}
+
 /* hero */
 .hero {
   background: var(--indigo);

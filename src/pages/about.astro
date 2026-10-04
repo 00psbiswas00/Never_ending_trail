@@ -11,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="bn" lang="bn">নেভার এন্ডিং ট্রেল ক্লাব</div>
         <p>A group of friends who travel anywhere, by any means: bike, train, road, boat, plane, mountains. Every trip becomes a story on our social pages, YouTube, blog and vlogs.</p>
       </div>
-      <div><div class="frame"><image-slot id="about-group" shape="rect" placeholder="The whole group, on a trip"></image-slot></div><div class="cap">[Caption: where this was, and which trip.]</div></div>
+      <div><div class="frame"><span class="slot">The whole group, on a trip</span></div><div class="cap">[Caption: where this was, and which trip.]</div></div>
     </div>
   </section>
   <section class="idea" data-screen-label="The idea">
@@ -80,5 +80,5 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   const crew=Array.from({length:8},(_,i)=>i+1);
-  document.getElementById('mgrid').innerHTML=crew.map(i=>`<div class="member"><div class="frame"><image-slot id="member-${i}" shape="rect" placeholder="Member photo, on a trip"></image-slot></div><h3>[Name]</h3><div class="bn" lang="bn">[নাম]</div><p>[Their job on the road: the map reader, the one with the camera, the tea finder.]</p><div class="label since">Since Trip [01] · [Home town]</div></div>`).join('');
+  document.getElementById('mgrid').innerHTML=crew.map(i=>`<div class="member"><div class="frame"><span class="slot">Member photo, on a trip</span></div><h3>[Name]</h3><div class="bn" lang="bn">[নাম]</div><p>[Their job on the road: the map reader, the one with the camera, the tea finder.]</p><div class="label since">Since Trip [01] · [Home town]</div></div>`).join('');
 </script>
