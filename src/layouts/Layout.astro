@@ -179,26 +179,27 @@ const { title } = Astro.props;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NETC sun cursor - light theme */
-  body {
-    cursor: url("/cursors/netc-sun.svg") 16 16, auto;
-  }
-
-  a, button, [role="button"], label, summary, nav a, .btn {
-    cursor: url("/cursors/netc-sun-hover.svg") 16 16, auto;
-  }
-
-  input, textarea, [contenteditable] {
-    cursor: text;
+  /* NETC sun cursor. Hotspot is the centre of the sun. */
+  @media (pointer: fine) {
+    body {
+      cursor: url("/cursors/netc-sun.svg") 16 16, auto;
+    }
+    a, button, [role="button"], label, summary {
+      cursor: url("/cursors/netc-sun-hover.svg") 16 16, pointer;
+    }
+    input, textarea, [contenteditable] {
+      cursor: text;
+    }
   }
 
   /* Dark theme cursors */
-  .on-indigo {
-    cursor: url("/cursors/netc-sun-dark.svg") 16 16, auto;
-  }
-
-  .on-indigo a, .on-indigo button, .on-indigo [role="button"], .on-indigo label, .on-indigo summary, .on-indigo .btn {
-    cursor: url("/cursors/netc-sun-hover-dark.svg") 16 16, auto;
+  @media (pointer: fine) {
+    .on-indigo {
+      cursor: url("/cursors/netc-sun-dark.svg") 16 16, auto;
+    }
+    .on-indigo a, .on-indigo button, .on-indigo [role="button"], .on-indigo label, .on-indigo summary {
+      cursor: url("/cursors/netc-sun-hover-dark.svg") 16 16, pointer;
+    }
   }
 
   a {
