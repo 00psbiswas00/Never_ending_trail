@@ -95,6 +95,27 @@ const { title } = Astro.props;
     --mono: 'IBM Plex Mono', 'Courier New', monospace;
     --bn: 'Anek Bangla', sans-serif;
     --sec: 96px;
+    --sb-track: #fbf8f1;
+    --sb-thumb: #c9372c;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--sb-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb);
+    border: 3px solid var(--sb-track);
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--indigo);
   }
 
   * {
