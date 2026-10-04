@@ -1,6 +1,7 @@
 :root {
   --indigo: #23325E;
   --red: #C9372C;
+  --red-text: #B0302A; /* red for small text on cream: 5.3:1 (brand red is 4.3:1) */
   --red-on-indigo: #E0503F;
   --turmeric: #E3A21A;
   --turmeric-on-indigo: #EDB22A;
@@ -602,6 +603,17 @@ footer.site .bot {
   margin-top: auto;
 }
 
+/* Links on cream surfaces take the darker red to keep 4.5:1 */
+.scroll a,
+.tcard a {
+  color: var(--red-text);
+}
+
+.scroll a:hover,
+.tcard a:hover {
+  color: var(--indigo);
+}
+
 .tell {
   padding: 0 0 var(--sec);
 }
@@ -653,6 +665,31 @@ footer.site .bot {
   font-weight: 600;
   font-size: 16px;
   margin-top: auto;
+}
+
+@media (max-width: 1100px) {
+  .tgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stops {
+    display: none;
+  }
+
+  .cgrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chan {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 32px;
+  }
+
+  .chan .ph {
+    grid-row: span 6;
+    margin: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -740,31 +777,6 @@ footer.site .bot {
 
   .cgrid {
     grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 1100px) {
-  .tgrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .stops {
-    display: none;
-  }
-
-  .cgrid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .chan {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 32px;
-  }
-
-  .chan .ph {
-    grid-row: span 6;
-    margin: 0;
   }
 }
 
